@@ -1,0 +1,95 @@
+{
+  "app": { "name": "Kisan Seva", "tagline": "India Grows Here." },
+  "nav": {
+    "home": "Home",
+    "farm": "My Farm",
+    "fields": "Fields",
+    "crops": "Crops",
+    "finance": "Finance",
+    "family": "Family",
+    "settings": "Settings",
+    "more": "More"
+  },
+  "onboarding": {
+    "title": "Welcome to Kisan Seva",
+    "createFarm": "Create My Farm",
+    "joinFarm": "Join a Farm",
+    "tryDemo": "Try Demo",
+    "your_land_identity": "Your land, your identity",
+    "choose_your_state": "Choose your state",
+    "your_home_location": "Your farm location",
+    "district_mandal_village": "District, mandal, and village",
+    "start_kisan_seva": "Start Kisan Seva",
+    "field_identity_heading": "Your field identity",
+    "name_and_area": "Name and cultivated area",
+    "select_all_applicable": "Select all that apply"
+  },
+  "farm": {
+    "ksId": "KS Farm ID",
+    "name": "Farm Name",
+    "state": "State",
+    "district": "District",
+    "mandal": "Mandal",
+    "village": "Village",
+    "surveyNumber": "Survey Number",
+    "surveyOptional": "Optional — from your Adangal/ROR 1-B. Add later if needed.",
+    "area": "Total Area",
+    "ownership": "Ownership Type",
+    "purposes": "Farm Type"
+  },
+  "field": {
+    "name": "Field Name",
+    "area": "Area",
+    "soilType": "Soil Type",
+    "irrigation": "Irrigation",
+    "tenure": "Tenure",
+    "addField": "Add Field",
+    "noFields": "No fields added yet. Add your first field to start tracking crops."
+  },
+  "crop": {
+    "name": "Crop",
+    "variety": "Variety",
+    "season": "Season",
+    "sowingDate": "Sowing Date",
+    "harvestDate": "Expected Harvest",
+    "mspBadge": "MSP: \u20b9{{amount}}/quintal",
+    "addCrop": "Plan Crop Season",
+    "noSeasons": "No crop seasons planned. Add a crop to begin."
+  },
+  "invite": {
+    "title": "Invite Family Member",
+    "code": "Invite Code",
+    "link": "Invite Link",
+    "whatsapp": "Share on WhatsApp",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "expires": "Expires in 24 hours (code) / 7 days (link)"
+  },
+  "joinFarm": {
+    "invite_code_hint": "Enter your 6-character invite code (uppercase letters and numbers)"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "loading": "Loading...",
+    "error": "Something went wrong. Please try again.",
+    "offline": "You are offline — changes will sync when connected.",
+    "required": "This field is required",
+    "optional": "Optional"
+  },
+  "demo": { "banner": "Demo Farm — Your data is not saved" },
+  "classification": {
+    "warning_dairy": "Dairy income is Business Income — taxable under normal slab rates",
+    "warning_fish": "Fish sale on own agricultural land = Agri Income (Section 10(1) exempt)",
+    "warning_honey_unbranded": "Unbranded honey from farm bees = Agri Income",
+    "warning_honey_branded": "Packaged/branded honey = Business Income — taxable",
+    "warning_microgreens_restaurant": "Sold to restaurant/retail = Business Income (BI-GHS-002)",
+    "warning_microgreens_home": "Sold locally/home delivery = Agri Income (AI-GHS-001)",
+    "warning_pmkisan": "PM-KISAN instalment = Agri Income — tax exempt under Section 10(1)",
+    "warning_machinery": "Hiring out your tractor = Business Income (BI-MCH-001)",
+    "warning_mushroom": "Mushroom grown on own farm residue = Agri Income",
+    "warning_duck": "Duck eggs from own farm = Agri Income (AI-DCK-001)"
+  }
+}

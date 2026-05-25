@@ -1,0 +1,408 @@
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UpdateFieldInput = 
+ record {
+   areaSqm: opt nat;
+   geoPoints: opt vec record {
+                        float64;
+                        float64;
+                      };
+   irrigationType: opt text;
+   name: opt text;
+   shcExpiry: opt Timestamp;
+   shcNumber: opt text;
+   soilType: opt text;
+   surveyNumber: opt text;
+   tenure: opt text;
+   ulpin: opt text;
+   unit: opt text;
+ };
+type UpdateFarmInput = 
+ record {
+   district: opt text;
+   mandal: opt text;
+   name: opt text;
+   ownershipType: opt text;
+   purposes: opt vec text;
+   surveyNumber: opt text;
+   totalAreaSqm: opt nat;
+   village: opt text;
+ };
+type Timestamp = int;
+type SaveLandRecordInput = 
+ record {
+   adangalNumber: opt text;
+   bhudhaarNumber: opt text;
+   genericRecordNumber: opt text;
+   pahaniNumber: opt text;
+   pattadarPassbook: opt text;
+   rtcNumber: opt text;
+   satbaraNumber: opt text;
+   state: text;
+ };
+type Result_9 = 
+ variant {
+   err: text;
+   ok: opt LandRecord;
+ };
+type Result_8 = 
+ variant {
+   err: text;
+   ok: vec NotificationEntity;
+ };
+type Result_7 = 
+ variant {
+   err: text;
+   ok: CropHarvest;
+ };
+type Result_6 = 
+ variant {
+   err: text;
+   ok: FarmerProfile;
+ };
+type Result_5 = 
+ variant {
+   err: text;
+   ok: LandRecord;
+ };
+type Result_4 = 
+ variant {
+   err: text;
+   ok: bool;
+ };
+type Result_3 = 
+ variant {
+   err: text;
+   ok: CropSeason;
+ };
+type Result_2 = 
+ variant {
+   err: text;
+   ok: Farm;
+ };
+type Result_17 = 
+ variant {
+   err: text;
+   ok: ClassificationCode;
+ };
+type Result_16 = 
+ variant {
+   err: text;
+   ok: InviteToken;
+ };
+type Result_15 = 
+ variant {
+   err: text;
+   ok: vec InviteToken;
+ };
+type Result_14 = 
+ variant {
+   err: text;
+   ok: vec AuditLog;
+ };
+type Result_13 = 
+ variant {
+   err: text;
+   ok: opt CropMSP;
+ };
+type Result_12 = 
+ variant {
+   err: text;
+   ok: vec CropSeason;
+ };
+type Result_11 = 
+ variant {
+   err: text;
+   ok: vec FarmMember;
+ };
+type Result_10 = 
+ variant {
+   err: text;
+   ok: vec Field;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: Field;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok: FarmMember;
+ };
+type QualityGrade = 
+ variant {
+   FAQ;
+   GradeA;
+   GradeB;
+   Processing;
+   Rejected;
+ };
+type NotificationEntity = 
+ record {
+   body: text;
+   createdAt: Timestamp;
+   farmId: nat;
+   id: nat;
+   isDismissed: bool;
+   isRead: bool;
+   notifType: text;
+   recipientPrincipal: principal;
+   snoozedUntil: opt Timestamp;
+   soundType: text;
+   title: text;
+ };
+type ModuleToggles = 
+ record {
+   crops: bool;
+   dairy: bool;
+   finance: bool;
+   fisheries: bool;
+   greenhouse: bool;
+   horticulture: bool;
+   labour: bool;
+   machinery: bool;
+   poultry: bool;
+   solar: bool;
+ };
+type MemberRole = 
+ variant {
+   Admin;
+   Member;
+   ViewOnly;
+ };
+type LandRecord = 
+ record {
+   adangalNumber: opt text;
+   bhudhaarNumber: opt text;
+   fieldId: nat;
+   genericRecordNumber: opt text;
+   id: nat;
+   pahaniNumber: opt text;
+   pattadarPassbook: opt text;
+   rtcNumber: opt text;
+   satbaraNumber: opt text;
+   state: text;
+ };
+type InviteToken = 
+ record {
+   acceptedBy: opt principal;
+   code: text;
+   createdBy: principal;
+   expiresAt: Timestamp;
+   farmId: nat;
+   hmac: text;
+   id: nat;
+   moduleToggles: ModuleToggles;
+   revokedAt: opt Timestamp;
+   role: MemberRole;
+   token: text;
+ };
+type Field = 
+ record {
+   areaSqm: nat;
+   createdAt: Timestamp;
+   farmId: nat;
+   geoPoints: vec record {
+                    float64;
+                    float64;
+                  };
+   id: nat;
+   irrigationType: text;
+   isActive: bool;
+   landRecordRef: opt text;
+   name: text;
+   shcExpiry: opt Timestamp;
+   shcNumber: opt text;
+   soilType: text;
+   surveyNumber: opt text;
+   tenure: text;
+   ulpin: opt text;
+   unit: text;
+ };
+type FarmerProfile = 
+ record {
+   aadhaarBankLinked: bool;
+   agristackId: opt text;
+   bankBranch: opt text;
+   bankIfsc: opt text;
+   bankLast4: opt text;
+   fpoMember: bool;
+   fssaiNumber: opt text;
+   gstNumber: opt text;
+   mobile: opt text;
+   name: text;
+   "principal": principal;
+ };
+type FarmMember = 
+ record {
+   addedBy: principal;
+   emoji: text;
+   farmId: nat;
+   id: nat;
+   joinedAt: Timestamp;
+   lastActiveAt: opt Timestamp;
+   moduleToggles: ModuleToggles;
+   name: text;
+   phone: opt text;
+   "principal": opt principal;
+   relation: text;
+   role: MemberRole;
+ };
+type Farm = 
+ record {
+   createdAt: Timestamp;
+   district: text;
+   id: nat;
+   isDemo: bool;
+   ksId: text;
+   mandal: text;
+   name: text;
+   ownerPrincipal: principal;
+   ownershipType: text;
+   purposes: vec text;
+   state: text;
+   surveyNumber: opt text;
+   totalAreaSqm: nat;
+   village: text;
+ };
+type CropStage = 
+ variant {
+   Flowering;
+   Germination;
+   GrainFilling;
+   Harvest;
+   LandPrep;
+   PostHarvest;
+   Sowing;
+   Vegetative;
+ };
+type CropSeason = 
+ record {
+   actualYieldQt: opt float64;
+   areaSqm: nat;
+   createdAt: Timestamp;
+   cropName: text;
+   expectedHarvestDate: Timestamp;
+   expectedYieldQt: opt float64;
+   farmId: nat;
+   fieldId: nat;
+   financialYear: text;
+   id: nat;
+   isInterCrop: bool;
+   mspPerQuintal: opt nat;
+   parentCropId: opt nat;
+   season: text;
+   sowingDate: Timestamp;
+   stage: CropStage;
+   variety: text;
+ };
+type CropMSP = 
+ record {
+   cropName: text;
+   financialYear: text;
+   id: nat;
+   lastUpdated: Timestamp;
+   mspPerQuintal: nat;
+   season: text;
+ };
+type CropHarvest = 
+ record {
+   actualYieldQt: float64;
+   cropSeasonId: nat;
+   harvestDate: Timestamp;
+   id: nat;
+   moisturePercent: opt float64;
+   notes: opt text;
+   qualityGrade: QualityGrade;
+   recordedBy: principal;
+ };
+type ClassificationEntry = 
+ record {
+   code: text;
+   description: text;
+   examples: vec text;
+   warnings: vec text;
+ };
+type ClassificationCode = 
+ record {
+   code: text;
+   guidance: text;
+   incomeType: text;
+   taxSection: text;
+ };
+type AuditLog = 
+ record {
+   action: text;
+   actorPrincipal: principal;
+   details: text;
+   entityId: text;
+   entityType: text;
+   farmId: nat;
+   id: nat;
+   timestamp: Timestamp;
+ };
+service : {
+  _initializeAccessControl: () -> ();
+  acceptInvite: (code: text) -> (Result_2);
+  addFarmMember: (farmId: nat, name: text, relation: text, emoji: text,
+   phone: opt text, role: MemberRole, moduleToggles: ModuleToggles) ->
+   (Result);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  classifyIncome: (module: text, itemType: text, marketChannel: text) ->
+   (Result_17) query;
+  createCropSeason: (farmId: nat, fieldId: nat, cropName: text, variety:
+   text, season: text, financialYear: text, areaSqm: nat, sowingDate:
+   Timestamp, expectedHarvestDate: Timestamp, mspPerQuintal: opt nat,
+   isInterCrop: bool, parentCropId: opt nat) -> (Result_3);
+  createFarm: (name: text, state: text, district: text, mandal: text,
+   village: text, surveyNumber: opt text, totalAreaSqm: nat, unit: text,
+   ownershipType: text, purposes: vec text) -> (Result_2);
+  createField: (farmId: nat, name: text, areaSqm: nat, unit: text, soilType:
+   text, irrigationType: text, tenure: text, surveyNumber: opt text, ulpin:
+   opt text, shcNumber: opt text, shcExpiry: opt Timestamp, geoPoints:
+   vec record {
+         float64;
+         float64;
+       }) -> (Result_1);
+  deleteField: (fieldId: nat) -> (Result_4);
+  generateInvite: (farmId: nat, role: MemberRole, moduleToggles:
+   ModuleToggles) -> (Result_16);
+  getActiveInvites: (farmId: nat) -> (Result_15) query;
+  getAllMSPRates: (financialYear: text) -> (vec CropMSP) query;
+  getAuditLog: (farmId: nat, limit: nat) -> (Result_14) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getClassificationCodes: () -> (vec ClassificationEntry) query;
+  getCropMSP: (cropName: text, season: text, financialYear: text) ->
+   (Result_13) query;
+  getCropSeasonsForFarm: (farmId: nat, financialYear: text) ->
+   (Result_12) query;
+  getCropSeasonsForField: (fieldId: nat) -> (Result_12) query;
+  getDemoFarm: () -> (Result_2) query;
+  getFarm: (farmId: nat) -> (Result_2) query;
+  getFarmMembers: (farmId: nat) -> (Result_11) query;
+  getFarmerProfile: () -> (Result_6) query;
+  getFieldsForFarm: (farmId: nat) -> (Result_10) query;
+  getLandRecord: (fieldId: nat) -> (Result_9) query;
+  getNotifications: (farmId: nat) -> (Result_8) query;
+  getUserFarms: () -> (vec Farm) query;
+  isCallerAdmin: () -> (bool) query;
+  logHarvest: (cropSeasonId: nat, harvestDate: Timestamp, yieldQt: float64,
+   qualityGrade: QualityGrade, moisturePercent: opt float64, notes:
+   opt text) -> (Result_7);
+  markNotificationRead: (notifId: nat) -> (Result_4);
+  removeFarmMember: (farmId: nat, memberId: nat) -> (Result_4);
+  revokeInvite: (farmId: nat, inviteId: nat) -> (Result_4);
+  saveFarmerProfile: (profile: FarmerProfile) -> (Result_6);
+  saveLandRecord: (fieldId: nat, "record": SaveLandRecordInput) -> (Result_5);
+  snoozeNotification: (notifId: nat, until: Timestamp) -> (Result_4);
+  updateCropStage: (cropSeasonId: nat, stage: CropStage) -> (Result_3);
+  updateFarm: (farmId: nat, updates: UpdateFarmInput) -> (Result_2);
+  updateField: (fieldId: nat, updates: UpdateFieldInput) -> (Result_1);
+  updateMemberRole: (farmId: nat, memberId: nat, newRole: MemberRole) ->
+   (Result);
+}

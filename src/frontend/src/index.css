@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/assets/fonts/CormorantGaramond.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* FarmOS Earth Palette */
+    --background: 0.99 0.003 120;
+    --foreground: 0.2 0.04 148;
+    --card: 1 0 0;
+    --card-foreground: 0.2 0.04 148;
+    --popover: 0.99 0.003 120;
+    --popover-foreground: 0.2 0.04 148;
+
+    /* Deep forest green primary */
+    --primary: 0.38 0.11 148;
+    --primary-foreground: 0.99 0 0;
+
+    --secondary: 0.96 0.02 148;
+    --secondary-foreground: 0.38 0.11 148;
+
+    --muted: 0.95 0.01 148;
+    --muted-foreground: 0.5 0.04 148;
+
+    /* Warm amber accent */
+    --accent: 0.68 0.18 72;
+    --accent-foreground: 0.15 0.05 72;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.88 0.03 148;
+    --input: 0.88 0.03 148;
+    --ring: 0.38 0.11 148;
+
+    /* Semantic positive/negative */
+    --positive: 0.52 0.13 145;
+    --negative: 0.52 0.2 25;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 0.97 0.005 150;
+    --sidebar-foreground: 0.2 0.02 145;
+    --sidebar-primary: 0.68 0.18 72;
+    --sidebar-primary-foreground: 0.15 0.05 72;
+    --sidebar-accent: 0.96 0.02 148;
+    --sidebar-accent-foreground: 0.38 0.11 148;
+    --sidebar-border: 0.88 0.03 148;
+    --sidebar-ring: 0.38 0.11 148;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+  }
+
+  .font-display {
+    font-family: "Cormorant Garamond", serif;
+  }
+
+  code,
+  pre,
+  kbd {
+    font-family: "JetBrains Mono", monospace;
+  }
+}
+
+/* ============================================================
+   ANIMATION SYSTEM
+   ============================================================ */
+
+/* 1. Reduced motion — must be first. Drops ALL transitions to instant. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* 2. Radix UI popper/dropdown/select/tooltip — opacity only, no slide/zoom */
+[role="menu"],
+[role="listbox"],
+[role="tooltip"],
+[data-radix-popper-content-wrapper] {
+  animation: none !important;
+}
+
+[data-radix-popper-content-wrapper][data-state="open"],
+[role="menu"][data-state="open"],
+[role="listbox"][data-state="open"],
+[role="tooltip"][data-state="open"] {
+  opacity: 1;
+  transition: opacity 150ms ease;
+}
+
+[data-radix-popper-content-wrapper][data-state="closed"],
+[role="menu"][data-state="closed"],
+[role="listbox"][data-state="closed"],
+[role="tooltip"][data-state="closed"] {
+  opacity: 0;
+  transition: opacity 150ms ease;
+  pointer-events: none;
+}
+
+/* Disable the tailwindcss-animate slide/zoom keyframes on Radix content wrappers */
+[data-radix-popper-content-wrapper] .animate-in,
+[data-radix-popper-content-wrapper] .animate-out,
+[role="menu"].animate-in,
+[role="menu"].animate-out,
+[role="listbox"].animate-in,
+[role="listbox"].animate-out {
+  animation: none !important;
+  --tw-enter-opacity: 1 !important;
+  --tw-enter-translate-x: 0 !important;
+  --tw-enter-translate-y: 0 !important;
+  --tw-enter-scale: 1 !important;
+  --tw-exit-opacity: 1 !important;
+  --tw-exit-translate-x: 0 !important;
+  --tw-exit-translate-y: 0 !important;
+  --tw-exit-scale: 1 !important;
+}
+
+@layer utilities {
+  /* Opacity fade — show/hide, inline alerts, badges (150–200ms) */
+  .transition-fade {
+    transition: opacity 200ms ease;
+  }
+
+  /* Expand/collapse — height transition with overflow hidden */
+  .transition-height {
+    transition: height 200ms ease-out;
+    overflow: hidden;
+  }
+
+  /* Progress bar fills — width animates to value */
+  .transition-progress {
+    transition-property: width;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+  }
+
+  /* Chevron icon — rotates 0→180deg to reflect open/closed */
+  .rotate-chevron {
+    transition: transform 150ms ease;
+    display: inline-flex;
+  }
+  .rotate-chevron.open {
+    transform: rotate(180deg);
+  }
+
+  /* Sliding nav/tab indicator */
+  .nav-indicator {
+    position: absolute;
+    transition: all 200ms ease;
+  }
+
+  /* Skeleton → content transition */
+  .skeleton-fade-out {
+    transition: opacity 150ms ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .content-fade-in {
+    transition: opacity 150ms ease;
+    opacity: 1;
+  }
+}

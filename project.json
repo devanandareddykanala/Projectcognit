@@ -1,0 +1,24 @@
+{
+  "overview": "Kisan Seva is a luxury India-first digital farm management PWA for Indian farmers, supporting land records, crop planning, family access management, income classification, and government scheme tracking.",
+  "features": [
+    "Install as PWA on Android with offline support",
+    "Farm creation with unique KS Farm ID and Indian location cascade",
+    "Family onboarding with invite links, WhatsApp sharing, and role-based access",
+    "Telugu, Hindi, and English language switching with Indian script fonts",
+    "Field management with state-adaptive land records (Adangal, Pahani, 7/12)",
+    "Crop season planning with MSP badge, stage tracker, and harvest log",
+    "Income auto-classification with 40+ Indian tax codes",
+    "Demo farm (Develvyn Farm) accessible without account"
+  ],
+  "category": "farm-management",
+  "tags": [
+    "agriculture",
+    "india",
+    "pwa",
+    "farm-management",
+    "offline",
+    "multilingual",
+    "income-tracking"
+  ],
+  "last_updated": "2026-05-24T09:33:29.903Z"
+}

@@ -1,0 +1,275 @@
+// Version: 1.0.0
+type AuditLog__986115331 =
+  {
+    action : Text;
+    actorPrincipal : Principal;
+    details : Text;
+    entityId : Text;
+    entityType : Text;
+    farmId : Nat;
+    id : Nat;
+    timestamp : Timestamp__602325539
+  };
+type CropHarvest__1037575897 =
+  {
+    actualYieldQt : Float;
+    cropSeasonId : Nat;
+    harvestDate : Timestamp__602325539;
+    id : Nat;
+    moisturePercent : ?Float;
+    notes : ?Text;
+    qualityGrade : QualityGrade__256843561;
+    recordedBy : Principal
+  };
+type CropMSP__792340216 =
+  {
+    cropName : Text;
+    financialYear : Text;
+    id : Nat;
+    lastUpdated : Timestamp__602325539;
+    mspPerQuintal : Nat;
+    season : Text
+  };
+type CropSeason__107964617 =
+  {
+    actualYieldQt : ?Float;
+    areaSqm : Nat;
+    createdAt : Timestamp__602325539;
+    cropName : Text;
+    expectedHarvestDate : Timestamp__602325539;
+    expectedYieldQt : ?Float;
+    farmId : Nat;
+    fieldId : Nat;
+    financialYear : Text;
+    id : Nat;
+    isInterCrop : Bool;
+    mspPerQuintal : ?Nat;
+    parentCropId : ?Nat;
+    season : Text;
+    sowingDate : Timestamp__602325539;
+    stage : CropStage__748457451;
+    variety : Text
+  };
+type CropStage__748457451 =
+  {
+    #Flowering;
+    #Germination;
+    #GrainFilling;
+    #Harvest;
+    #LandPrep;
+    #PostHarvest;
+    #Sowing;
+    #Vegetative
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type FarmMember__561961200 =
+  {
+    addedBy : Principal;
+    emoji : Text;
+    farmId : Nat;
+    id : Nat;
+    joinedAt : Timestamp__602325539;
+    lastActiveAt : ?Timestamp__602325539;
+    moduleToggles : ModuleToggles__457372268;
+    name : Text;
+    phone : ?Text;
+    principal : ?Principal;
+    relation : Text;
+    role : MemberRole__503253449
+  };
+type Farm__303074725 =
+  {
+    createdAt : Timestamp__602325539;
+    district : Text;
+    id : Nat;
+    isDemo : Bool;
+    ksId : Text;
+    mandal : Text;
+    name : Text;
+    ownerPrincipal : Principal;
+    ownershipType : Text;
+    purposes : [Text];
+    state : Text;
+    surveyNumber : ?Text;
+    totalAreaSqm : Nat;
+    village : Text
+  };
+type FarmerProfile__397164722 =
+  {
+    aadhaarBankLinked : Bool;
+    agristackId : ?Text;
+    bankBranch : ?Text;
+    bankIfsc : ?Text;
+    bankLast4 : ?Text;
+    fpoMember : Bool;
+    fssaiNumber : ?Text;
+    gstNumber : ?Text;
+    mobile : ?Text;
+    name : Text;
+    principal : Principal
+  };
+type Field__511950143 =
+  {
+    areaSqm : Nat;
+    createdAt : Timestamp__602325539;
+    farmId : Nat;
+    geoPoints : [(Float, Float)];
+    id : Nat;
+    irrigationType : Text;
+    isActive : Bool;
+    landRecordRef : ?Text;
+    name : Text;
+    shcExpiry : ?Timestamp__602325539;
+    shcNumber : ?Text;
+    soilType : Text;
+    surveyNumber : ?Text;
+    tenure : Text;
+    ulpin : ?Text;
+    unit : Text
+  };
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type InviteToken__7917854 =
+  {
+    acceptedBy : ?Principal;
+    code : Text;
+    createdBy : Principal;
+    expiresAt : Timestamp__602325539;
+    farmId : Nat;
+    hmac : Text;
+    id : Nat;
+    moduleToggles : ModuleToggles__457372268;
+    revokedAt : ?Timestamp__602325539;
+    role : MemberRole__503253449;
+    token : Text
+  };
+type LandRecord__948240637 =
+  {
+    adangalNumber : ?Text;
+    bhudhaarNumber : ?Text;
+    fieldId : Nat;
+    genericRecordNumber : ?Text;
+    id : Nat;
+    pahaniNumber : ?Text;
+    pattadarPassbook : ?Text;
+    rtcNumber : ?Text;
+    satbaraNumber : ?Text;
+    state : Text
+  };
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type MemberRole__503253449 = {#Admin; #Member; #ViewOnly};
+type ModuleToggles__457372268 =
+  {
+    crops : Bool;
+    dairy : Bool;
+    finance : Bool;
+    fisheries : Bool;
+    greenhouse : Bool;
+    horticulture : Bool;
+    labour : Bool;
+    machinery : Bool;
+    poultry : Bool;
+    solar : Bool
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type NotificationEntity__579942950 =
+  {
+    body : Text;
+    createdAt : Timestamp__602325539;
+    farmId : Nat;
+    id : Nat;
+    isDismissed : Bool;
+    isRead : Bool;
+    notifType : Text;
+    recipientPrincipal : Principal;
+    snoozedUntil : ?Timestamp__602325539;
+    soundType : Text;
+    title : Text
+  };
+type QualityGrade__256843561 =
+  {#FAQ; #GradeA; #GradeB; #Processing; #Rejected};
+type Timestamp__602325539 = Int;
+type UserRole__1054455867 = {#admin; #guest; #user};
+actor {
+  stable _seedDemoFarm : ();
+  stable _seedMspRates : ();
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1054455867>
+    };
+  stable auditCounter : {var v : Nat};
+  stable auditLogs :
+    {
+      var root : Node__46230540<Nat, AuditLog__986115331>;
+      var size : Nat__490723111
+    };
+  stable cropHarvestCounter : {var v : Nat};
+  stable cropHarvests :
+    {
+      var root : Node__46230540<Nat, CropHarvest__1037575897>;
+      var size : Nat__490723111
+    };
+  stable cropSeasonCounter : {var v : Nat};
+  stable cropSeasons :
+    {
+      var root : Node__46230540<Nat, CropSeason__107964617>;
+      var size : Nat__490723111
+    };
+  stable farmCounter : {var v : Nat};
+  stable farms :
+    {
+      var root : Node__46230540<Nat, Farm__303074725>;
+      var size : Nat__490723111
+    };
+  stable fieldCounter : {var v : Nat};
+  stable fields :
+    {
+      var root : Node__46230540<Nat, Field__511950143>;
+      var size : Nat__490723111
+    };
+  stable hmacSecret : {var blob : Blob};
+  stable inviteCounter : {var v : Nat};
+  stable invites :
+    {
+      var root : Node__46230540<Nat, InviteToken__7917854>;
+      var size : Nat__490723111
+    };
+  stable landRecordCounter : {var v : Nat};
+  stable landRecords :
+    {
+      var root : Node__46230540<Nat, LandRecord__948240637>;
+      var size : Nat__490723111
+    };
+  stable memberCounter : {var v : Nat};
+  stable members :
+    {
+      var root : Node__46230540<Nat, FarmMember__561961200>;
+      var size : Nat__490723111
+    };
+  stable mspCounter : {var v : Nat};
+  stable mspRates :
+    {
+      var root : Node__46230540<Nat, CropMSP__792340216>;
+      var size : Nat__490723111
+    };
+  stable notifCounter : {var v : Nat};
+  stable notifications :
+    {
+      var root : Node__46230540<Nat, NotificationEntity__579942950>;
+      var size : Nat__490723111
+    };
+  stable profiles :
+    {
+      var root : Node__46230540<Principal, FarmerProfile__397164722>;
+      var size : Nat__490723111
+    }
+};
